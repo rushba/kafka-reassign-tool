@@ -275,6 +275,7 @@ def set_replication(assignments, brokers, replication_factor)
 
     item = item.clone()
     item['replicas'] = replicas
+    item.delete("log_dirs")
 
     new_assignments << item
   }
@@ -379,4 +380,3 @@ else
   puts "  #{get_kafka_root + '/bin/kafka-reassign-partitions.sh'} --zookeeper #{zk_url} --reassignment-json-file new-assignments.json --verify"
   puts
 end
-
