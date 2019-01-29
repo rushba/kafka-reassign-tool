@@ -362,6 +362,9 @@ end
 
 puts "Getting current assignments..."
 assignments = get_current_assignments(topics, known_brokers)
+File.open('old-assignments.json', 'w') { |file|
+  file.write(assignments.to_json)
+}
 
 puts "Building new assignments..."
 new_assignments = set_replication(assignments, brokers, replication_factor)
